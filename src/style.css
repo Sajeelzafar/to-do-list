@@ -9,7 +9,7 @@ body {
   align-items: center;
 }
 
-.mainContainer, 
+.mainContainer,
 .clearAll {
   display: flex;
   flex-direction: column;
