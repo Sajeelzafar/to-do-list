@@ -1,7 +1,46 @@
-.hello {
-  color: red;
+body {
+  background-color: lightgray;
+  padding: 0;
+  margin: 0;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
-body {
-  background-color: bisque;
+.mainContainer, 
+.clearAll {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 40%;
+}
+
+.mainContainer {
+  background-color: white;
+}
+
+.list,
+.listinputbox {
+  display: flex;
+  width: 96%;
+  border: 1px solid lightgray;
+  justify-content: space-between;
+  align-items: center;
+  padding: 2%;
+}
+
+.listinput {
+  border: none;
+}
+
+.clearallButton {
+  /* display: flex;
+  align-items: center;
+  justify-content: center; */
+  width: 100%;
+  color: grey;
+  padding: 4%;
 }
