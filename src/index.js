@@ -14,7 +14,6 @@ let todoTasks;
 let flag = 1;
 
 window.addEventListener('DOMContentLoaded', () => {
-
   if (localStorage.getItem('todoList') === null) {
     todoTasks = [];
   } else {
@@ -22,9 +21,9 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   display();
-  
-  listinput.addEventListener("keypress", function(event) {
-    if (event.key === "Enter") {
+
+  listinput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
       event.preventDefault();
       todoTasks = add(listinput.value, todoTasks);
       print(todoTasks[todoTasks.length - 1]);
@@ -33,40 +32,34 @@ window.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  listContainer.addEventListener("click", (e) => {
+  listContainer.addEventListener('click', (e) => {
     e.preventDefault();
-    console.log(flag);
-    if (e.target.id == "menu" && flag == 1){
-      flag++;
-      let spantag = e.target.parentElement;
-      let divselected = spantag.parentElement;
-      let textToEdit = divselected.querySelector("p");
-      spantag.innerHTML = `<i id="tick" class="fa-solid fa-check"></i><i id="delete" class="fa fa-trash" aria-hidden="true"></i>`;
+    if (e.target.id === 'menu' && flag === 1) {
+      flag += 1;
+      const spantag = e.target.parentElement;
+      const divselected = spantag.parentElement;
+      const textToEdit = divselected.querySelector('p');
+      spantag.innerHTML = '<i id="tick" class="fa-solid fa-check"></i><i id="delete" class="fa fa-trash" aria-hidden="true"></i>';
       textToEdit.contentEditable = true;
       textToEdit.classList.add('editing');
       textToEdit.focus();
-      
-      document.getElementById("tick").addEventListener("click", () => {
-        textToEdit.contentEditable = false;
-        spantag.innerHTML=`<i id="menu" class="fa-solid fa-ellipsis-vertical"></i>`;
-        error.innerHTML = ``;
-        flag = 1;
-        todoTasks[divselected.id-1].description = textToEdit.textContent;
-        edit(divselected.id-1, textToEdit.textContent);
-      })
 
-      document.getElementById("delete").addEventListener("click", () => {
+      document.getElementById('tick').addEventListener('click', () => {
+        textToEdit.contentEditable = false;
+        spantag.innerHTML = '<i id="menu" class="fa-solid fa-ellipsis-vertical"></i>';
+        error.innerHTML = '';
+        flag = 1;
+        todoTasks[divselected.id - 1].description = textToEdit.textContent;
+        edit(divselected.id - 1, textToEdit.textContent);
+      });
+
+      document.getElementById('delete').addEventListener('click', () => {
         todoTasks = remove(divselected, todoTasks);
         display();
-        console.log(todoTasks);
         flag = 1;
-      })
+      });
+    } else if (flag !== 1) {
+      error.innerHTML = '<span>Please save the changes or remove the element</span>';
     }
-
-    else if (flag !== 1) {
-      error.innerHTML = `<span>Please save the changes or remove the element</span>`;
-    }
-  })
-  
+  });
 });
-

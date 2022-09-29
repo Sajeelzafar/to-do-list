@@ -1,5 +1,5 @@
 const edit = (index, edit) => {
-    let todoTasks;
+  let todoTasks;
 
   if (localStorage.getItem('todoList') === null) {
     todoTasks = [];
@@ -8,6 +8,6 @@ const edit = (index, edit) => {
   }
   todoTasks[index].description = edit;
   localStorage.setItem('todoList', JSON.stringify(todoTasks));
-}
+};
 
 export default edit;

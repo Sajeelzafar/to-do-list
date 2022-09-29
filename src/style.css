@@ -51,10 +51,10 @@ body {
   border: 1px solid lightgray;
   justify-content: space-between;
   align-items: center;
-
 }
 
-.listinputbox, .listheading {
+.listinputbox,
+.listheading {
   padding: 2% 0 2% 0;
 }
 

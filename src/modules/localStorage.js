@@ -8,7 +8,6 @@ const localStorageSave = (n) => {
   }
   todoTasks.push(n);
   localStorage.setItem('todoList', JSON.stringify(todoTasks));
-  };
-
+};
 
 export default localStorageSave;
