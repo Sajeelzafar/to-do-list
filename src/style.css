@@ -10,16 +10,25 @@ body {
 }
 
 .mainContainer,
+.listContainer,
 .clearAll {
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+.listContainer {
+  width: 100%;
+}
+
+.clearAll {
   width: 40%;
 }
 
 .mainContainer {
   background-color: white;
+  width: 40%;
 }
 
 .list,
@@ -49,4 +58,8 @@ body {
   color: grey;
   cursor: pointer;
   padding: 4%;
+}
+
+.listitemIcon {
+  cursor: pointer;
 }
