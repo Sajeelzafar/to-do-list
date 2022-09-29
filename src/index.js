@@ -4,6 +4,7 @@ import print from './modules/print.js';
 import localStorageSave from './modules/localStorage.js';
 import edit from './modules/edit.js';
 import remove from './modules/remove.js';
+import display from './modules/display.js';
 
 const listContainer = document.querySelector('.listContainer');
 const listinput = document.querySelector('.listinput');
@@ -20,14 +21,7 @@ window.addEventListener('DOMContentLoaded', () => {
     todoTasks = JSON.parse(localStorage.getItem('todoList'));
   }
 
-  todoTasks.forEach((n) => {
-    const output = document.createElement('div');
-    output.classList.add('listitem');
-    output.setAttribute('id', `${n.index}`);
-    output.innerHTML = `<div class="listitemleft"><input type="checkbox"> <p>${n.description}</p></div> <span class="listitemIcon"><i id="menu" class="fa-solid fa-ellipsis-vertical"></i></span>`;
-    listContainer.appendChild(output);
-    
-  });
+  display();
   
   listinput.addEventListener("keypress", function(event) {
     if (event.key === "Enter") {
@@ -63,6 +57,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
       document.getElementById("delete").addEventListener("click", () => {
         todoTasks = remove(divselected, todoTasks);
+        display();
         console.log(todoTasks);
         flag = 1;
       })
