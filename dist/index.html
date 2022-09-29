@@ -1,1 +1,33 @@
-<!doctype html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Wbpack Exercise</title><script defer="defer" src="runtime.bundle.js"></script><script defer="defer" src="main.bundle.js"></script></head><body><h3>Today's To do</h3><form class="form"><input class="name" placeholder="Title" required/> <input class="author" placeholder="Author" required/> <span class="error"></span> <button class="addButton" type="button">Add</button></form></body></html>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-control" content="no-cache">
+    <script src="https://kit.fontawesome.com/a738fb17fd.js" crossorigin="anonymous"></script>
+    <title>To do list</title>
+<script defer src="runtime.bundle.js"></script><script defer src="main.bundle.js"></script></head>
+<body class="body">
+    <div class="outsideContainer">
+        <div class="mainContainer">
+            
+            <div class="list">
+                <span class="listheading">Today's To do</span>
+                <span><i class="fa-solid fa-rotate"></i></span>
+            </div>
+            
+            <div class="listinputbox">
+                <input class="listinput" type="text" placeholder="Add to your list...">
+                <span><i class="fa-sharp fa-solid fa-arrow-left-long arrow icon"></i></span>
+            </div>
+            
+            <div class="listContainer"></div>
+        </div>
+
+        <div class="clearAll">
+            <button class="clearallButton" type="button">Clear all completed</button>
+        </div>
+        <div class="error"></div>
+    </div>    
+</body>
+</html>

@@ -1,34 +1,65 @@
 import './style.css';
+import add from './modules/add.js';
+import print from './modules/print.js';
+import localStorageSave from './modules/localStorage.js';
+import edit from './modules/edit.js';
+import remove from './modules/remove.js';
+import display from './modules/display.js';
 
-const mainContainer = document.querySelector('.mainContainer');
+const listContainer = document.querySelector('.listContainer');
+const listinput = document.querySelector('.listinput');
+const error = document.querySelector('.error');
 
-const todoTasks = [{
-  description: 'wash the dishes',
-  completed: true,
-  index: 1,
-},
-{
-  description: 'complete project',
-  completed: true,
-  index: 2,
-},
-{
-  description: 'play game',
-  completed: false,
-  index: 3,
-},
-{
-  description: 'wash car',
-  completed: false,
-  index: 4,
-}];
+let todoTasks;
+let flag = 1;
 
-document.addEventListener('DOMContentLoaded', () => {
-  todoTasks.forEach((n) => {
-    const output = document.createElement('div');
-    output.classList.add('listitem');
-    output.setAttribute('id', `${n.index}`);
-    output.innerHTML = `<div><input type="checkbox"> ${n.description}</div> <span class="listitemIcon"><i class="fa-solid fa-ellipsis-vertical"></i></span>`;
-    mainContainer.appendChild(output);
+window.addEventListener('DOMContentLoaded', () => {
+  if (localStorage.getItem('todoList') === null) {
+    todoTasks = [];
+  } else {
+    todoTasks = JSON.parse(localStorage.getItem('todoList'));
+  }
+
+  display();
+
+  listinput.addEventListener('keypress', (event) => {
+    if (event.key === 'Enter') {
+      event.preventDefault();
+      todoTasks = add(listinput.value, todoTasks);
+      print(todoTasks[todoTasks.length - 1]);
+      localStorageSave(todoTasks[todoTasks.length - 1]);
+      listinput.value = '';
+    }
+  });
+
+  listContainer.addEventListener('click', (e) => {
+    e.preventDefault();
+    if (e.target.id === 'menu' && flag === 1) {
+      flag += 1;
+      const spantag = e.target.parentElement;
+      const divselected = spantag.parentElement;
+      const textToEdit = divselected.querySelector('p');
+      spantag.innerHTML = '<i id="tick" class="fa-solid fa-check"></i><i id="delete" class="fa fa-trash" aria-hidden="true"></i>';
+      textToEdit.contentEditable = true;
+      textToEdit.classList.add('editing');
+      textToEdit.focus();
+
+      document.getElementById('tick').addEventListener('click', () => {
+        textToEdit.contentEditable = false;
+        spantag.innerHTML = '<i id="menu" class="fa-solid fa-ellipsis-vertical"></i>';
+        error.innerHTML = '';
+        flag = 1;
+        todoTasks[divselected.id - 1].description = textToEdit.textContent;
+        edit(divselected.id - 1, textToEdit.textContent);
+      });
+
+      document.getElementById('delete').addEventListener('click', () => {
+        todoTasks = remove(divselected, todoTasks);
+        display();
+        flag = 1;
+      });
+    } else if (flag !== 1) {
+      error.innerHTML = '<span>Please save the changes or remove the element</span>';
+    }
   });
 });
