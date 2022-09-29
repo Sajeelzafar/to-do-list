@@ -3,6 +3,7 @@ import add from './modules/add.js';
 import print from './modules/print.js';
 import localStorageSave from './modules/localStorage.js';
 import edit from './modules/edit.js';
+import remove from './modules/remove.js';
 
 const listContainer = document.querySelector('.listContainer');
 const listinput = document.querySelector('.listinput');
@@ -39,6 +40,8 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 
   listContainer.addEventListener("click", (e) => {
+    e.preventDefault();
+    console.log(flag);
     if (e.target.id == "menu" && flag == 1){
       flag++;
       let spantag = e.target.parentElement;
@@ -49,14 +52,19 @@ window.addEventListener('DOMContentLoaded', () => {
       textToEdit.classList.add('editing');
       textToEdit.focus();
       
-      document.getElementById("tick").addEventListener("click", (e) => {
+      document.getElementById("tick").addEventListener("click", () => {
         textToEdit.contentEditable = false;
         spantag.innerHTML=`<i id="menu" class="fa-solid fa-ellipsis-vertical"></i>`;
         error.innerHTML = ``;
         flag = 1;
         todoTasks[divselected.id-1].description = textToEdit.textContent;
         edit(divselected.id-1, textToEdit.textContent);
+      })
+
+      document.getElementById("delete").addEventListener("click", () => {
+        todoTasks = remove(divselected, todoTasks);
         console.log(todoTasks);
+        flag = 1;
       })
     }
 
