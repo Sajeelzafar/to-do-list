@@ -1,7 +1,6 @@
 let todoTasks;
 
 const editstatus = (id, checkbox) => {
-    console.log(id, checkbox);
     if (localStorage.getItem('todoList') === null) {
         todoTasks = [];
       } else {

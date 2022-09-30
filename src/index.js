@@ -6,11 +6,12 @@ import edit from './modules/edit.js';
 import remove from './modules/remove.js';
 import display from './modules/display.js';
 import editstatus from './modules/editstatus';
+import delselected from './modules/delselected';
 
 const listContainer = document.querySelector('.listContainer');
 const listinput = document.querySelector('.listinput');
 const error = document.querySelector('.error');
-
+const clearallButton = document.querySelector('.clearallButton');
 
 let todoTasks;
 let flag = 1;
@@ -84,5 +85,9 @@ window.addEventListener('DOMContentLoaded', () => {
     });
   });
     
+  })
+    
   });
+  clearallButton.addEventListener('click', () => {
+    delselected();
 });
