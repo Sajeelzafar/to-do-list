@@ -8,8 +8,14 @@ const delselected = () => {
       }
 
       todoTasks = todoTasks.filter(status => status.completed === false);
-    //   console.log(todoTasks.completed);
-    console.log("updated", todoTasks);
+    let indexnumber = 1;
+      
+    todoTasks.forEach(element => {
+        element.index = indexnumber;
+        indexnumber += 1;
+      });
+
+    localStorage.setItem('todoList', JSON.stringify(todoTasks));
 }
 
 export default delselected;

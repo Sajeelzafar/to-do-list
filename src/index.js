@@ -90,4 +90,5 @@ window.addEventListener('DOMContentLoaded', () => {
   });
   clearallButton.addEventListener('click', () => {
     delselected();
+    display();
 });
