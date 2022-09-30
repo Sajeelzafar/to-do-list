@@ -7,6 +7,8 @@ const delselected = () => {
         todoTasks = JSON.parse(localStorage.getItem('todoList'));
       }
 
+      todoTasks = todoTasks.filter(status => status.completed === false);
+    //   console.log(todoTasks.completed);
     console.log("updated", todoTasks);
 }
 
