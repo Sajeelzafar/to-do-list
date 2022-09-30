@@ -13,8 +13,10 @@ const display = () => {
     const output = document.createElement('div');
     output.classList.add('listitem');
     output.setAttribute('id', `${n.index}`);
-    output.innerHTML = `<div class="listitemleft"><input type="checkbox"> <p>${n.description}</p></div> <span class="listitemIcon"><i id="menu" class="fa-solid fa-ellipsis-vertical"></i></span>`;
+    output.innerHTML = `<div class="listitemleft"> <input class="checkBox" name="checkbox" value="yes" type=checkbox> <p>${n.description}</p></div> <span class="listitemIcon"><i id="menu" class="fa-solid fa-ellipsis-vertical"></i></span>`;
     listContainer.appendChild(output);
+    
+
   });
 };
 
