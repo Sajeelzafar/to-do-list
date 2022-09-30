@@ -94,12 +94,11 @@ body {
   margin: 0;
 }
 
-  input[type="checkbox"] {
-    height: 20px;
-    width: 20px;
-    color: green;
-  }
-
+input[type="checkbox"] {
+  height: 20px;
+  width: 20px;
+  color: green;
+}
 
 .editing {
   width: 100%;
