@@ -23,9 +23,9 @@ describe('add test', () => {
 
 describe('removing item', () => {
   test('removing an item', () => {
-    add('Emre Book', []);
-    add('Sajeel Book', [{ description: 'Emre Book', completed: false, index: 1 }]);
-    expect(remove('<div id="1"></div>', [{ description: 'Emre Book', completed: false, index: 1 },
-      { description: 'Sajeel Book', completed: false, index: 2 }])).toEqual([{ description: 'Sajeel Book', completed: false, index: 1 }]);
+    document.body.innerHTML = '<div id="listContainer"><div id="1"></div><div id="2"></div></div>';
+    const list = document.querySelectorAll('.listContainer');
+    remove('<div id="1"></div>', [{ description: 'Emre Book', completed: false, index: 1 }, { description: 'Sajeel Book', completed: false, index: 2 }]);
+    expect(list).toHaveLength(1);
   });
 });
