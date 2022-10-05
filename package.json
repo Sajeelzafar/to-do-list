@@ -5,7 +5,7 @@
   "private": true,
   "scripts": {
     "dev": "webpack --mode development",
-    "test": "jest",
+    "test": "jest --env=jsdom",
     "watch": "webpack --watch",
     "start": "webpack serve --open",
     "build": "webpack"

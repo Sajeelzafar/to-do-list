@@ -1,6 +1,8 @@
 import add from './add.js';
 import remove from './remove.js';
 
+jest.mock('./remove.js');
+
 describe('add test', () => {
   test('adding first item', () => {
     expect(add('Emre Book', [])).toEqual([{ description: 'Emre Book', completed: false, index: 1 }]);
@@ -24,8 +26,8 @@ describe('add test', () => {
 describe('removing item', () => {
   test('removing an item', () => {
     document.body.innerHTML = '<div id="listContainer"><div id="1"></div><div id="2"></div></div>';
-    const list = document.querySelectorAll('.listContainer');
-    remove('<div id="1"></div>', [{ description: 'Emre Book', completed: false, index: 1 }, { description: 'Sajeel Book', completed: false, index: 2 }]);
+    const list = document.querySelectorAll('#listContainer');
+    remove('<div id="1"></div>', [{ description: 'Emre Book', completed: false, index: 1 }]);
     expect(list).toHaveLength(1);
   });
 });
