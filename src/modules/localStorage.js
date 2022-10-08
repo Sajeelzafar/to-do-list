@@ -1,5 +1,4 @@
 const localStorageSave = (todoTasks) => {
-  
   localStorage.setItem('todoList', JSON.stringify(todoTasks));
 };
 
