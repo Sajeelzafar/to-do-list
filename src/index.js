@@ -18,13 +18,13 @@ let flag = 1;
 
 window.addEventListener('DOMContentLoaded', () => {
   // Displays everything that is present inside the local storage
-  display();
+  todoTasks = display();
   // Looks for keyword enter in order to add what has been typed in to the list
   listinput.addEventListener('keypress', (event) => {
     if (event.key === 'Enter') {
       todoTasks = add(listinput.value, todoTasks);
       print(todoTasks[todoTasks.length - 1]);
-      localStorageSave(todoTasks[todoTasks.length - 1]);
+      localStorageSave(todoTasks);
       listinput.value = '';
     }
   });
@@ -46,12 +46,12 @@ window.addEventListener('DOMContentLoaded', () => {
         error.innerHTML = '';
         flag = 1;
         todoTasks[divselected.id - 1].description = textToEdit.textContent;
-        edit(divselected.id - 1, textToEdit.textContent);
+        edit(divselected.id - 1, textToEdit.textContent, todoTasks);
       });
       // deletes the list
       document.getElementById('delete').addEventListener('click', () => {
         todoTasks = remove(divselected, todoTasks);
-        display();
+        todoTasks = display();
         flag = 1;
       });
     } else if (flag !== 1) {
@@ -67,11 +67,11 @@ window.addEventListener('DOMContentLoaded', () => {
         const edit = div.querySelector('p');
         if (e.target.type === 'checkbox' && e.target.checked === false && flag2 === 0) {
           edit.style.textDecoration = 'none';
-          editstatus(div.id, e.target.checked);
+          editstatus(div.id, e.target.checked, todoTasks);
           flag2 += 1;
         } else if (e.target.type === 'checkbox' && e.target.checked === true && flag2 === 0) {
           edit.style.textDecoration = 'line-through';
-          editstatus(div.id, e.target.checked);
+          editstatus(div.id, e.target.checked, todoTasks);
           flag2 += 1;
         }
       });
@@ -79,6 +79,6 @@ window.addEventListener('DOMContentLoaded', () => {
   });
 });
 clearallButton.addEventListener('click', () => {
-  delselected();
-  display();
+  delselected(todoTasks);
+  todoTasks = display();
 });

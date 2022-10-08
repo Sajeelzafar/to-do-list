@@ -21,6 +21,7 @@ const display = () => {
       output.querySelector('p').style.textDecoration = 'line-through';
     }
   });
+  return todoTasks;
 };
 
 export default display;
