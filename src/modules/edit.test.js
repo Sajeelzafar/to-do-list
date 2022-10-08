@@ -1,13 +1,13 @@
 import edit from './edit.js';
 
-describe("edit test", () => {
-  let todoTasks = [{description: 'hello', completed: false, index: 1}];
+describe('edit test', () => {
+  const todoTasks = [{ description: 'hello', completed: false, index: 1 }];
   localStorage.setItem('todoList', JSON.stringify(todoTasks));
-  edit(0, "Microverse")
-      test("String test", () => {
-          expect(JSON.parse(localStorage.getItem('todoList'))[0].description).toEqual("Microverse");
-      })
-})
+  edit(0, 'Microverse');
+  test('String test', () => {
+    expect(JSON.parse(localStorage.getItem('todoList'))[0].description).toEqual('Microverse');
+  });
+});
 
 // import localStorageSave from './localStorage.js';
 
@@ -25,20 +25,22 @@ describe("edit test", () => {
 //     }
 // }
 
-// describe("edit test", () => { 
+// describe("edit test", () => {
 //     let data;
-    
+
 //     beforeAll( () => {
 //         Window.localStorage = new LocalStorage();
 //     });
 
-    // beforeEach(() => {
-    //     lStorage = new LocalStorage();
-    //     Object.defineProperty(window, 'localStorage', {value: lStorage})
-    //     data = JSON.parse('[{"description":"1","completed":false,"index":1},{"description":"2","completed":false,"index":2},{"description":"3","completed":false,"index":3}]');
-    //     console.log(data);
-    //     Window.localStorage.setItem('todoList', data);
-    // });
+// beforeEach(() => {
+//     lStorage = new LocalStorage();
+//     Object.defineProperty(window, 'localStorage', {value: lStorage})
+//     data = JSON.parse('[{"description":"1","completed":false,"index":1},
+// {"description":"2","completed":false,"index":2},
+// {"description":"3","completed":false,"index":3}]');
+//     console.log(data);
+//     Window.localStorage.setItem('todoList', data);
+// });
 
 //     it("Should edit the first task ", () => {
 //         const lStorage = new LocalStorage();
@@ -47,7 +49,7 @@ describe("edit test", () => {
 //         localStorageSave({"description":"2","completed":false,"index":2});
 //         localStorageSave({"description":"3","completed":false,"index":3});
 //         console.log(window.localStorage.getItem('todoList'));
-        // Window.localStorage.setItem('todoList', data);
+// Window.localStorage.setItem('todoList', data);
 //         const newDescription = "not 1";
 //         edit(0, newDescription);
 
@@ -65,8 +67,8 @@ describe("edit test", () => {
 //     angular.module('mock-module',[])
 //   });
 
-  // --- snip ---
-  // Mock localStorage
+// --- snip ---
+// Mock localStorage
 //   beforeEach(() => {
 //     var store = {};
 
@@ -83,7 +85,7 @@ describe("edit test", () => {
 //         store = {};
 //     });
 //   });
-  
+
 //   //--- snap ---
 
 //   beforeEach(()=> {
@@ -114,23 +116,17 @@ describe("edit test", () => {
 //   });
 // });
 
-
-
-
-
-
 // import edit from './edit.js';
 // jest.mock('./edit.js');
 
-
 // describe("edit test", () => {
 //     edit(3, "Ex-Microverse");
-    
-    // expect('setItem').toHaveBeenCalled();
-    // expect('getItem').toHaveBeenCalled();
-    
-    // expect().toEqual([{ description: 'Emre Book', completed: false, index: 1 },
-    // { description: 'Hello', completed: false, index: 2 },
-    // { description: 'Ex-Microverse', completed: false, index: 3 },
-    // { description: 'Sajeel Book', completed: false, index: 4 }])
+
+// expect('setItem').toHaveBeenCalled();
+// expect('getItem').toHaveBeenCalled();
+
+// expect().toEqual([{ description: 'Emre Book', completed: false, index: 1 },
+// { description: 'Hello', completed: false, index: 2 },
+// { description: 'Ex-Microverse', completed: false, index: 3 },
+// { description: 'Sajeel Book', completed: false, index: 4 }])
 // })

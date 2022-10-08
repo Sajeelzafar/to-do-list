@@ -1,12 +1,4 @@
-let todoTasks;
-
-const editstatus = (id, checkbox) => {
-  if (localStorage.getItem('todoList') === null) {
-    todoTasks = [];
-  } else {
-    todoTasks = JSON.parse(localStorage.getItem('todoList'));
-  }
-
+const editstatus = (id, checkbox, todoTasks) => {
   if (checkbox) {
     todoTasks[id - 1].completed = true;
   } else {
