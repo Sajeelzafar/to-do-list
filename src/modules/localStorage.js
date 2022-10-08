@@ -1,4 +1,4 @@
-const localStorageSave = (n) => {
+const localStorageSave = (newtask) => {
   let todoTasks;
 
   if (localStorage.getItem('todoList') === null) {
@@ -6,7 +6,7 @@ const localStorageSave = (n) => {
   } else {
     todoTasks = JSON.parse(localStorage.getItem('todoList'));
   }
-  todoTasks.push(n);
+  todoTasks.push(newtask);
   localStorage.setItem('todoList', JSON.stringify(todoTasks));
 };
 

@@ -1,6 +1,5 @@
 const edit = (index, edit) => {
   let todoTasks;
-
   if (localStorage.getItem('todoList') === null) {
     todoTasks = [];
   } else {
