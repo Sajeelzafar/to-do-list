@@ -17,11 +17,6 @@ let todoTasks;
 let flag = 1;
 
 window.addEventListener('DOMContentLoaded', () => {
-  if (localStorage.getItem('todoList') === null) {
-    todoTasks = [];
-  } else {
-    todoTasks = JSON.parse(localStorage.getItem('todoList'));
-  }
   // Displays everything that is present inside the local storage
   display();
   // Looks for keyword enter in order to add what has been typed in to the list
